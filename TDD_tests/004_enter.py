@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from random import randint
+from selenium.webdriver.common.action_chains import ActionChains
 
 driver = webdriver.Chrome()
 driver.maximize_window()
@@ -19,7 +20,14 @@ CNFRMTN_PSWD_FLD = (By.ID, "registrationform-comfirmpassword")
 CHCK_BX = (By.XPATH, "(//label[@class='title__h4 color_checkbox'])[1]") # (By.XPATH, "//input[@type='checkbox']") # (By.CSS_SELECTOR, "label.title__h4.color_checkbox")
 GT_PSWD = (By.XPATH, "(//button[@type='submit'])[2]")
 TXT_HERE = (By.XPATH, "//div[@class='type_2 ']")
-
+CNTRY_DRP_DWN_MN = (By.XPATH, "(//select[@class='form-control'])[1]")
+CTY_FLD = (By.ID, "debitoraddform-city")
+EML_FLD = (By.XPATH, "//input[@title='Email']")
+CLCK_AFTR_CTY = (By.XPATH, "//li[@class='ui-menu-item']")
+LST_MDL_SR_NMS_FLD = (By.XPATH, "//input[@title='Фамилия Имя Отчество']")
+CLS_PP_UP_WNW = (By.XPATH, "(//button[@class='close'])[1]")
+SBMT_BTN = (By.XPATH, "//button[text()='Добавить']")
+CNFRMTN_OF_CD_TXT = (By.XPATH, "//h2[@class='text-uppercase text-light']")
 
 # Explicit wait
 wait = WebDriverWait(driver, 15)
@@ -67,6 +75,35 @@ actual_txt = wait.until(EC.presence_of_element_located((TXT_HERE))).text
 print(f'Actual text: {actual_txt}')
 assert expected_txt in actual_txt
 print(f'Expected "{expected_txt}", and got: "{actual_txt}" ')
+
+# 11. Choose Россия from drop-down menu
+wait.until(EC.presence_of_element_located(CNTRY_DRP_DWN_MN)).click()
+wait.until(EC.presence_of_element_located(CNTRY_DRP_DWN_MN)).send_keys('Россия')
+
+# 12. Input Верхний Уфалей into city field
+wait.until(EC.element_to_be_clickable(CTY_FLD)).click()
+wait.until(EC.presence_of_element_located(CTY_FLD)).send_keys('Верхний Уфалей')
+wait.until(EC.element_to_be_clickable(CLCK_AFTR_CTY)).click()
+
+# 13.  Input randomly generated address into the email field
+wait.until(EC.presence_of_element_located(EML_FLD)).clear()
+wait.until(EC.presence_of_element_located(EML_FLD)).send_keys(email)
+
+# 14.  Input randomly generated name into the name field
+wait.until(EC.presence_of_element_located(LST_MDL_SR_NMS_FLD)).clear()
+wait.until(EC.presence_of_element_located(LST_MDL_SR_NMS_FLD)).send_keys('Иван Иваныч Иванов')
+
+# 15. Click on Submit button
+button = driver.find_element(By.XPATH, "//button[text()='Добавить']")
+driver.execute_script("arguments[0].click();", button)
+
+# 16. Verify text: Подтверждение доступа is here
+expected_txt = 'Подтверждение доступа'
+actual_txt = wait.until(EC.presence_of_element_located((CNFRMTN_OF_CD_TXT))).text
+print(f'Actual text: {actual_txt}')
+assert expected_txt.lower() in actual_txt.lower()
+print(f'Expected "{expected_txt}", and got: "{actual_txt}" ')
+
 
 # Sleep to see what we have
 sleep(2)
