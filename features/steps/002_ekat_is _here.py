@@ -1,8 +1,5 @@
 from behave import *
 
-use_step_matcher("re")
-
-
 @then("Click on Ekaterinburg/Yes")
 def clck_ekat_is_hr(context):
     """

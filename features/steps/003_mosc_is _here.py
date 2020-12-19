@@ -1,8 +1,5 @@
 from behave import *
 
-use_step_matcher("re")
-
-
 @then("Click on Ekaterinburg/Moscow")
 def clck_mosc_is_hr(context):
     """
