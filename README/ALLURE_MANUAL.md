@@ -53,3 +53,16 @@ Starting web server...
 Server started at <http://192.168.56.1:53498/>. Press <Ctrl+C> to exit
 
 http://192.168.56.1:53498/index.html
+
+##########
+Jenkins
+https://www.swtestacademy.com/appium-tutorial/
+https://chetanbendre.wordpress.com/2019/03/16/execute-behave-scenarios-on-jenkins/
+https://www.browserstack.com/docs/app-automate/appium/integrations/jenkins
+# For Jenkins Virtualenv Builder
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install allure-behave
+pip install appium-python-client
+behave -f allure_behave.formatter:AllureFormatter -o %allure_result_folder% ./features
+allure serve test_results/

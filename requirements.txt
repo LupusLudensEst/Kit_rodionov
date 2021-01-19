@@ -1,5 +1,6 @@
-behave
+behave~=1.2.6
 selenium~=3.141.0
-allure-pytest
+allure-behave~=2.8.31
+allure-pytest~=2.8.31
 pytest~=6.1.0
-pip
+pip~=20.3.3
