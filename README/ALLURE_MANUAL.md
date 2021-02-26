@@ -55,14 +55,16 @@ Server started at <http://192.168.56.1:53498/>. Press <Ctrl+C> to exit
 http://192.168.56.1:53498/index.html
 
 ##########
-Jenkins
-https://www.swtestacademy.com/appium-tutorial/
-https://chetanbendre.wordpress.com/2019/03/16/execute-behave-scenarios-on-jenkins/
-https://www.browserstack.com/docs/app-automate/appium/integrations/jenkins
-# For Jenkins Virtualenv Builder
-pip install --upgrade pip
-pip install -r requirements.txt
-pip install allure-behave
-pip install appium-python-client
-behave -f allure_behave.formatter:AllureFormatter -o %allure_result_folder% ./features
-allure serve test_results/
+1. Just provoke Jenkins;
+2. Create requirements.txt: pip freeze > requirements.txt
+3. Define path to modul: which python3
+
+##########
+Renew git to tje latest version
+git update-git-for-windows
+
+##########
+Ignore some file/s when commiting/pushing
+npm install touch-cli -g
+touch .gitignore
+Write in the body of the .gitignore names of the files you want to exclude from committing and pushing to GitHub
