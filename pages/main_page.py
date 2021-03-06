@@ -160,42 +160,49 @@ class MainPage(Page):
     # Click on "от терминала"
     def click_on_from_terminal(self):
         wait = WebDriverWait(self.driver, 10)
+        sleep(3)
         wait.until(EC.element_to_be_clickable(FROM_TERMINAL)).click()
 
     # Click on "до терминала"
     def click_on_to_terminal(self):
         wait = WebDriverWait(self.driver, 10)
+        sleep(3)
         wait.until(EC.element_to_be_clickable(TO_TERMINAL)).click()
 
     # Send "999" to "кг"
     def send_weight(self, kgs):
         wait = WebDriverWait(self.driver, 10)
+        sleep(3)
         wait.until(EC.presence_of_element_located(KG)).clear()
         wait.until(EC.presence_of_element_located(KG)).send_keys(kgs)
 
     # Send "3.500" to "м3"
     def send_volume(self, volume):
         wait = WebDriverWait(self.driver, 10)
+        sleep(3)
         wait.until(EC.presence_of_element_located(CUBIC_METERS)).clear()
         wait.until(EC.presence_of_element_located(CUBIC_METERS)).send_keys(volume)
 
     # Send "3" to "мест"
     def send_places(self, places):
         wait = WebDriverWait(self.driver, 10)
+        sleep(3)
         wait.until(EC.presence_of_element_located(PLACES)).clear()
         wait.until(EC.presence_of_element_located(PLACES)).send_keys(places)
 
     # Send "30000" to "₽"
     def send_goods_value(self, goods_value):
         wait = WebDriverWait(self.driver, 10)
+        sleep(3)
         wait.until(EC.presence_of_element_located(GOODS_PRICE)).clear()
         wait.until(EC.presence_of_element_located(GOODS_PRICE)).send_keys(goods_value)
 
     # Click on "рассчитать"
     def click_count(self):
         wait = WebDriverWait(self.driver, 10)
+        sleep(3)
         wait.until(EC.element_to_be_clickable(COUNT)).click()
-        sleep(2)
+        sleep(3)
 
     # Verify "4 дня" is here as text
     def days_are_here(self):

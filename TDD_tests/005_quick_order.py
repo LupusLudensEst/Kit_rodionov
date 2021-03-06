@@ -13,8 +13,9 @@ CLOSE_ALERT = (By.XPATH, "//span[@aria-hidden='true']")
 QUICK_ORDER = (By.XPATH, "(//a[@data-toggle='modal'])[9]")
 # FROM_WHERE = (By.ID, "calculateminiformpopup-city_out")
 # TO_WHERE = (By.ID, "calculateminiformpopup-city_in")
-FROM_TERMINAL = (By.XPATH, "//label[@for='pickupType-term_popup']")
-TO_TERMINAL = (By.XPATH, "(//label[contains(text(), 'До терминала')])[2]")
+# FROM_TERMINAL = (By.XPATH, "//label[@for='pickupType-term_popup']")
+# FROM_TERMINAL = (By.XPATH, "(//label[@class='control-label'])[9]")
+# TO_TERMINAL = (By.XPATH, "(//label[contains(text(), 'До терминала')])[2]")
 KG = (By.ID, "weight_popup")
 CUBIC_METERS = (By.ID, "volumepopup")
 PLACES = (By.ID, "placespopup")
@@ -22,6 +23,7 @@ GOODS_PRICE = (By.ID, "pricepopup")
 COUNT = (By.ID, "fastOrderpopup")
 DAYS = (By.XPATH, "(//span[@class='value delivery_days'])[2]")
 VALUE_DELIVERY_COSTS = (By.XPATH, "(//div[@class='right__position'])[4]")
+# VALUE_DELIVERY_COSTS = (By.XPATH, "(//span[@class='value delivery_costs'])[2]")
 
 # Explicit wait
 wait = WebDriverWait(driver, 15)
@@ -46,33 +48,37 @@ actions.perform()
 # wait.until(EC.presence_of_element_located(TO_WHERE)).clear()
 # wait.until(EC.presence_of_element_located(TO_WHERE)).send_keys('Москва')
 
-# 5. Click on "от терминала"
-wait.until(EC.element_to_be_clickable(FROM_TERMINAL)).click()
-
-# 6. Click on "до терминала"
-wait.until(EC.element_to_be_clickable(TO_TERMINAL)).click()
+# # 5. Click on "от терминала"
+# wait.until(EC.element_to_be_clickable(FROM_TERMINAL)).click()
+#
+# # 6. Click on "до терминала"
+# wait.until(EC.element_to_be_clickable(TO_TERMINAL)).click()
 
 # 7. Send "999" to "кг"
+sleep(3)
 wait.until(EC.presence_of_element_located(KG)).clear()
 wait.until(EC.presence_of_element_located(KG)).send_keys('999')
 
 # 8. Send "3.500" to "м3"
+sleep(3)
 wait.until(EC.presence_of_element_located(CUBIC_METERS)).clear()
 wait.until(EC.presence_of_element_located(CUBIC_METERS)).send_keys('3.500')
 
 # 9. Send "3" to "мест"
+sleep(3)
 wait.until(EC.presence_of_element_located(PLACES)).clear()
 wait.until(EC.presence_of_element_located(PLACES)).send_keys('3')
 
 # 10. Send "30000" to "₽"
+sleep(3)
 wait.until(EC.presence_of_element_located(GOODS_PRICE)).clear()
 wait.until(EC.presence_of_element_located(GOODS_PRICE)).send_keys('30000')
 
 # 11. Click on "рассчитать"
 wait.until(EC.element_to_be_clickable(COUNT)).click()
-sleep(2)
 
 # 12. Verify "4 дня" is here as text
+sleep(3)
 expected_txt = '4 дня'
 actual_txt = wait.until(EC.presence_of_element_located((DAYS))).text
 print(f'Actual text: {actual_txt}')
