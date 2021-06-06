@@ -58,6 +58,7 @@ http://192.168.56.1:53498/index.html
 1. Just provoke Jenkins;
 2. Create requirements.txt: pip freeze > requirements.txt
 3. Define path to modul: which python3
+4. Renew requirements.txt: pip install --upgrade -r requirements.txt
 
 ##########
 Renew git to tje latest version
@@ -68,3 +69,19 @@ Ignore some file/s when commiting/pushing
 npm install touch-cli -g
 touch .gitignore
 Write in the body of the .gitignore names of the files you want to exclude from committing and pushing to GitHub
+
+##########
+# ran in parallel, you need to be in the same directory where there are files you are going to run
+python 001_main_page_text_here.py & 002_main_page_logo_here.py & 003_main_page_phone_here.py & 004_address_here.py & 005_email_here.py & 006_search_product.py & 007_shopbybrand_numbers_oneshot.py & 008_captcha_works.py & 009_checkout_buy.py & 010_cart_is_emthy.py & 011_shop_by_brands_have_nine_submenu.py & 012_cart_has_one_item.py & 013_register_and_enter.py & 014_payments_logopics_here.py          
+# ran one after another, you need to be in the same directory where there are files you are going to run
+python 001_main_page_text_here.py;002_main_page_logo_here.py;003_main_page_phone_here.py;004_address_here.py;005_email_here.py;006_search_product.py;007_shopbybrand_numbers_oneshot.py;008_captcha_works.py;009_checkout_buy.py;010_cart_is_emthy.py;011_shop_by_brands_have_nine_submenu.py;012_cart_has_one_item.py;013_register_and_enter.py;014_payments_logopics_here.py
+
+##########
+# Create requirements.txt
+pip freeze > requirements.txt
+# Update requirements.txt
+pip install -r requirements.txt --upgrade
+
+##########
+# retrieve the version of Selenium currently installed, from Python
+python -c "import selenium; print(selenium.__version__)"
