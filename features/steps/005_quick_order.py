@@ -72,7 +72,7 @@ def days_are_here(context):
     context.app.main_page.days_are_here()
 
 
-@step('Verify "8 941 ₽/8&nbsp;941 ₽" is here as text')
+@step('Verify "9 341 ₽/8&nbsp;341 ₽" is here as text')
 def freight_cost_is_here(context):
     """
     Verify "8 941 ₽/8&nbsp;941 ₽" is here as text

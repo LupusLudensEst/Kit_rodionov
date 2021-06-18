@@ -12,4 +12,4 @@ Feature: # Fill the form of "Quick order"
     Then Send "30000" to "₽"
     And Click on "рассчитать"
     Then Verify "4 дня" is here as text
-    And Verify "8 941 ₽/8&nbsp;941 ₽" is here as text
+    And Verify "9 341 ₽/8&nbsp;341 ₽" is here as text

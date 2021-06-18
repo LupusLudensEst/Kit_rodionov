@@ -215,7 +215,7 @@ class MainPage(Page):
 
     # Verify "8 941 ₽/8&nbsp;941 ₽" is here as text
     def freight_cost_is_here(self):
-        expected_txt = '8 941 ₽'
+        expected_txt = '9 341 ₽'
         wait = WebDriverWait(self.driver, 10)
         actual_txt = wait.until(EC.presence_of_element_located((VALUE_DELIVERY_COSTS))).text
         print(f'Actual text: {actual_txt}')
